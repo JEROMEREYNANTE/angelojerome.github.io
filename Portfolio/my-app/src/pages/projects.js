@@ -1,7 +1,11 @@
 // pages/projects.js
 
-import { motion, AnimatePresence } from "framer-motion";
+import Waves from "../components/Background/Waves";
+import { motion, AnimatePresence, color } from "framer-motion";
 import React, { useState, useEffect } from "react";
+import {
+  FaProjectDiagram,
+} from "react-icons/fa";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -79,6 +83,18 @@ export default function Projects() {
       variants={pageVariants}
       transition={pageTransition}
     >
+
+
+            <div style={styles.pageWrapper}>
+
+      <Waves
+        lineColor="#4f46e5"
+        backgroundColor="#000000"
+        waveSpeedX={0.02}
+        waveSpeedY={0.01}
+        waveAmpX={25}
+        waveAmpY={15}
+      />
       <div
         style={{
           display: "flex",
@@ -87,6 +103,7 @@ export default function Projects() {
           minHeight: "100vh",
           backgroundColor: "#f5f5f5",
           padding: isMobile ? "20px" : "60px",
+          zIndex: 2
         }}
       >
         <div
@@ -96,6 +113,18 @@ export default function Projects() {
             display: "flex",
             flexDirection: "column",
             gap: "20px",
+            zIndex: 3,
+            background: "rgba(255, 255, 255, 0.12)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            padding: "40px",
+            borderRadius: "20px",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+            position: "relative",
+
           }}
         >
           {/* TITLE */}
@@ -104,8 +133,11 @@ export default function Projects() {
               fontSize: isMobile ? "2rem" : "2.5rem",
               textAlign: isMobile ? "center" : "left",
               marginBottom: "10px",
+              color: "#f5f5f5"
             }}
           >
+                                                  <FaProjectDiagram color="#5048e5" />
+            
             Projects & Experience
           </h1>
 
@@ -230,6 +262,7 @@ export default function Projects() {
             })}
           </div>
         </div>
+        </div>
       </div>
 
       {/* IMAGE MODAL */}
@@ -266,3 +299,13 @@ export default function Projects() {
     </motion.div>
   );
 }
+
+const styles = {
+
+  pageWrapper: {
+  position: "relative",
+  width: "100%",
+  minHeight: "100vh",
+  overflow: "hidden",
+}
+};

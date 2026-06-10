@@ -1,7 +1,10 @@
 // pages/about.js
-
+import Waves from "../components/Background/Waves";
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  FaUserGraduate,
+} from "react-icons/fa";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -22,9 +25,32 @@ export default function About() {
       variants={pageVariants}
       transition={pageTransition}
     >
+
+      <div style={styles.pageWrapper}>
+
+      <Waves
+        lineColor="#4f46e5"
+        backgroundColor="#000000"
+        waveSpeedX={0.02}
+        waveSpeedY={0.01}
+        waveAmpX={25}
+        waveAmpY={15}
+      />
+
       <div style={styles.container}>
         <div style={styles.card}>
-          <h1 style={styles.title}>About Me</h1>
+<h1
+  style={{
+    ...styles.title,
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+
+  }}
+>
+  <FaUserGraduate color="#4f46e5" />
+  About Me
+</h1>
 
           <p style={styles.text}>
             I am a recent Software Engineering graduate with practical experience
@@ -48,33 +74,57 @@ export default function About() {
           </p>
         </div>
       </div>
+            </div>
     </motion.div>
   );
 }
 
 const styles = {
   container: {
+    position: "relative",
+    zIndex: 2,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     minHeight: "100vh",
     padding: "20px",
-    backgroundColor: "#f9f9f9",
   },
   card: {
     maxWidth: "800px",
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(255,255,255,0.9)",
+    backdropFilter: "blur(10px)",
     padding: "30px",
     borderRadius: "12px",
     boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+
+  width: "100%",
+  background: "rgba(255, 255, 255, 0.12)",
+  WebkitBackdropFilter: "blur(20px)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  position: "relative",
+  zIndex: 3,
   },
   title: {
     marginBottom: "20px",
     fontSize: "2.5rem",
+                      color: "rgba(255,255,255,0.85)"
+
   },
   text: {
     fontSize: "1.1rem",
     lineHeight: "1.6",
     marginBottom: "15px",
+                      color: "rgba(255,255,255,0.85)"
+
   },
+
+  pageWrapper: {
+  position: "relative",
+  width: "100%",
+  minHeight: "100vh",
+  overflow: "hidden",
+},
 };
+

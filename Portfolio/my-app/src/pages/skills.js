@@ -1,7 +1,9 @@
 // pages/skills.js
-
+import Waves from "../components/Background/Waves";
 import React from "react";
 import { motion } from "framer-motion";
+import { FaCode } from "react-icons/fa";
+
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -22,6 +24,17 @@ export default function Skills() {
       variants={pageVariants}
       transition={pageTransition}
     >
+
+            <div style={styles.pageWrapper}>
+
+      <Waves
+        lineColor="#4f46e5"
+        backgroundColor="#000000"
+        waveSpeedX={0.02}
+        waveSpeedY={0.01}
+        waveAmpX={25}
+        waveAmpY={15}
+      />
       <div
         style={{
           display: "flex",
@@ -30,19 +43,34 @@ export default function Skills() {
           minHeight: "100vh",
           backgroundColor: "#f5f5f5",
           padding: "60px",
+              zIndex: 2,
+
+          
         }}
       >
         <div
           style={{
             maxWidth: "800px",
             width: "100%",
-            backgroundColor: "#ffffff",
             padding: "40px",
             borderRadius: "16px",
             boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                zIndex: 3,
+
+            background: "rgba(255, 255, 255, 0.12)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+            position: "relative",
+
           }}
         >
-          <h1 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>
+          <h1 style={{ fontSize: "2.5rem", marginBottom: "20px",                   color: "rgba(255,255,255,0.85)"
+ }}>
+              <FaCode color="#5048e5" size={32}/>
+
             Skills & Expertise
           </h1>
 
@@ -50,7 +78,7 @@ export default function Skills() {
             style={{
               fontSize: "1.1rem",
               lineHeight: "1.7",
-              color: "#444",
+              color: "#ffffff",
               marginBottom: "20px",
             }}
           >
@@ -60,11 +88,12 @@ export default function Skills() {
             experience through research and feedback.
           </p>
 
-          <h2 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>
+          <h2 style={{ fontSize: "1.3rem", marginBottom: "10px",                   color: "rgba(255,255,255,0.85)"
+ }}>
             Technical Skills
           </h2>
 
-          <ul style={{ lineHeight: "1.8", color: "#555" }}>
+          <ul style={{ lineHeight: "1.8", color: "#ffffff" }}>
             <li>HTML & CSS – building structured and responsive web layouts</li>
             <li>JavaScript – interactive and dynamic web functionality</li>
             <li>React – component-based front-end development</li>
@@ -73,22 +102,24 @@ export default function Skills() {
             <li>Figma – UI design, prototyping, and interface planning</li>
           </ul>
 
-          <h2 style={{ fontSize: "1.3rem", marginTop: "20px", marginBottom: "10px" }}>
+          <h2 style={{ fontSize: "1.3rem", marginTop: "20px", marginBottom: "10px",                   color: "rgba(255,255,255,0.85)"
+ }}>
             UI/UX & Design Skills
           </h2>
 
-          <ul style={{ lineHeight: "1.8", color: "#555" }}>
+          <ul style={{ lineHeight: "1.8", color: "#ffffff" }}>
             <li>UI design and interface prototyping</li>
             <li>Human-Computer Interaction (HCI) principles</li>
             <li>User research and feedback analysis</li>
             <li>Wireframing and visual planning of interfaces</li>
           </ul>
 
-          <h2 style={{ fontSize: "1.3rem", marginTop: "20px", marginBottom: "10px" }}>
+          <h2 style={{ fontSize: "1.3rem", marginTop: "20px", marginBottom: "10px",                   color: "rgba(255,255,255,0.85)"
+ }}>
             Strengths
           </h2>
 
-          <ul style={{ lineHeight: "1.8", color: "#555" }}>
+          <ul style={{ lineHeight: "1.8", color: "#ffffff" }}>
             <li>Strong focus on user-centered design</li>
             <li>Ability to translate ideas into functional interfaces</li>
             <li>Continuous learning and improvement mindset</li>
@@ -96,6 +127,17 @@ export default function Skills() {
           </ul>
         </div>
       </div>
+            </div>
     </motion.div>
   );
 }
+
+const styles = {
+
+  pageWrapper: {
+  position: "relative",
+  width: "100%",
+  minHeight: "100vh",
+  overflow: "hidden",
+}
+};
