@@ -1,5 +1,5 @@
 // pages/index.js
-import Waves from "../components/Background/Waves";
+import Grainient from "../components/Background/Grainient";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaLaptopCode } from "react-icons/fa";
@@ -43,49 +43,21 @@ export default function Home() {
 
       <div style={styles.pageWrapper}>
 
-        <Waves
-          lineColor="#4f46e5"
-          backgroundColor="rgb(0, 0, 0)"
-          waveSpeedX={0.02}
-          waveSpeedY={0.01}
-          waveAmpX={25}
-          waveAmpY={15}
-        />
+        <div style={styles.backgroundLayer}>
+          <Grainient
+            color1="#0F172A"
+            color2="#2563EB"
+            color3="#94A3B8"
+            timeSpeed={1.6}
+          />
+        </div>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "60px",
-            margin: 0,
-            minHeight: "100vh",
-            zIndex: 2,
-
-          }}
-        >
-          <div
-            style={{
-              maxWidth: "900px",
-              width: "100%",
-              background: "rgba(255, 255, 255, 0.12)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              padding: "70px 60px",
-              borderRadius: "20px",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "20px",
-              position: "relative",
-              zIndex: 3,
-            }}
-          >
+        <div style={styles.container}>
+          <div style={styles.card}>
 
             <img
               src="/photo.jpg"
-              alt="Profile picture"
+              alt="Profile"
               style={{
                 width: "220px",
                 height: "220px",
@@ -152,6 +124,37 @@ const styles = {
     width: "100%",
     minHeight: "100vh",
     overflow: "hidden",
+  },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "60px",
+    margin: 0,
+    minHeight: "100vh",
+    zIndex: 2,
+  },
+  card: {
+    maxWidth: "900px",
+    width: "100%",
+    background: "rgba(255, 255, 255, 0.12)",
+    backdropFilter: "blur(20px)",
+    WebkitBackdropFilter: "blur(20px)",
+    padding: "70px 60px",
+    borderRadius: "20px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px",
+    position: "relative",
+    zIndex: 3,
+  },
+  backgroundLayer: {
+    position: "absolute",
+    inset: 0,
+    zIndex: 0,
+    pointerEvents: "none",
   }
 };
 

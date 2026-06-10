@@ -1,5 +1,5 @@
 // pages/contact.js
-import Waves from "../components/Background/Waves";
+import Grainient from "../components/Background/Grainient";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -47,46 +47,25 @@ export default function Contact() {
     >
 
       <div style={styles.pageWrapper}>
+        <div style={styles.backgroundLayer}>
 
-        <Waves
-          lineColor="#4f46e5"
-          backgroundColor="#000000"
-          waveSpeedX={0.02}
-          waveSpeedY={0.01}
-          waveAmpX={25}
-          waveAmpY={15}
-        />
+          <Grainient
+            color1="#0F172A"
+            color2="#2563EB"
+            color3="#94A3B8"
+            timeSpeed={1.6}
+          />
+        </div>
         <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "100vh",
-            padding: "60px",
-            zIndex: 2,
-          }}
+          style={styles.container}
         >
           <div
-            style={{
-              maxWidth: "700px",
-              width: "100%",
-              background: "rgba(255, 255, 255, 0.12)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              padding: "40px",
-              borderRadius: "20px",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "15px",
-              position: "relative",
-              zIndex: 3,
-            }}
+            style={styles.card}
           >
             <h1
               style={{
                 fontSize: "1.6rem",
-                fontWeight: "400",
+                fontWeight: "700",
                 marginTop: "12px",
                 marginBottom: "24px",
                 display: "flex",
@@ -106,22 +85,22 @@ export default function Contact() {
             </p>
 
             <div style={infoBox}>
-              <FaEnvelope color="#4f46e5" />
+              <FaEnvelope color="#ffffff" />
               <span> <strong>Email:</strong> reynantejerome@yahoo.com</span>
             </div>
 
             <div style={infoBox}>
-              <FaPhone color="#4f46e5" />
+              <FaPhone color="#ffffff" />
               <span> <strong>Phone Number:</strong> +1 403 803 9286</span>
             </div>
 
             <div style={infoBox}>
-              <FaGithub color="#4f46e5" />
+              <FaGithub color="#ffffff" />
               <span> <strong>Github:</strong> https://github.com/JEROMEREYNANTE</span>
             </div>
 
             <div style={infoBox}>
-              <FaMapMarkerAlt color="#4f46e5" />
+              <FaMapMarkerAlt color="#ffffff" />
               <span> <strong>Location:</strong> Calgary, Alberta, Canada</span>
             </div>
           </div>
@@ -138,6 +117,38 @@ const styles = {
     width: "100%",
     minHeight: "100vh",
     overflow: "hidden",
+  },
+
+  container: {
+    position: "relative",
+    zIndex: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "100vh",
+    padding: "20px",
+  },
+  card: {
+    maxWidth: "700px",
+    width: "100%",
+    background: "rgba(255, 255, 255, 0.12)",
+    backdropFilter: "blur(20px)",
+    WebkitBackdropFilter: "blur(20px)",
+    padding: "40px",
+    borderRadius: "20px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+    position: "relative",
+    zIndex: 3,
+
+  },
+  backgroundLayer: {
+    position: "absolute",
+    inset: 0,
+    zIndex: 0,
+    pointerEvents: "none",
   }
 };
 
