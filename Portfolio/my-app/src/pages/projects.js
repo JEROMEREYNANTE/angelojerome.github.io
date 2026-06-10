@@ -75,6 +75,21 @@ export default function Projects() {
     },
   ];
 
+  const fullText = "Projects & Experience";
+  const [typedText, setTypedText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < fullText.length) {
+      const timeout = setTimeout(() => {
+        setTypedText((prev) => prev + fullText[index]);
+        setIndex(index + 1);
+      }, 70); // typing speed
+
+      return () => clearTimeout(timeout);
+    }
+  }, [index]);
+
   return (
     <motion.div
       initial="initial"
@@ -85,183 +100,189 @@ export default function Projects() {
     >
 
 
-            <div style={styles.pageWrapper}>
+      <div style={styles.pageWrapper}>
 
-      <Waves
-        lineColor="#4f46e5"
-        backgroundColor="#000000"
-        waveSpeedX={0.02}
-        waveSpeedY={0.01}
-        waveAmpX={25}
-        waveAmpY={15}
-      />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          minHeight: "100vh",
-          backgroundColor: "#f5f5f5",
-          padding: isMobile ? "20px" : "60px",
-          zIndex: 2
-        }}
-      >
+        <Waves
+          lineColor="#4f46e5"
+          backgroundColor="#000000"
+          waveSpeedX={0.02}
+          waveSpeedY={0.01}
+          waveAmpX={25}
+          waveAmpY={15}
+        />
         <div
           style={{
-            maxWidth: "1200px",
-            width: "100%",
             display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            zIndex: 3,
-            background: "rgba(255, 255, 255, 0.12)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            padding: "40px",
-            borderRadius: "20px",
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-            position: "relative",
-
+            justifyContent: "center",
+            alignItems: "flex-start",
+            minHeight: "100vh",
+            backgroundColor: "#f5f5f5",
+            padding: isMobile ? "20px" : "60px",
+            zIndex: 2
           }}
         >
-          {/* TITLE */}
-          <h1
+          <div
             style={{
-              fontSize: isMobile ? "2rem" : "2.5rem",
-              textAlign: isMobile ? "center" : "left",
-              marginBottom: "10px",
-              color: "#f5f5f5"
+              maxWidth: "1200px",
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              zIndex: 3,
+              background: "rgba(255, 255, 255, 0.12)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              padding: "40px",
+              borderRadius: "20px",
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+              position: "relative",
+
             }}
           >
-                                                  <FaProjectDiagram color="#5048e5" />
-            
-            Projects & Experience
-          </h1>
+            {/* TITLE */}
 
-          {/* PROJECT LIST */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-            {projects.map((project, index) => {
-              const isActive = activeCard === index;
-              const isHovered = hoveredCard === index;
 
-              return (
-                <div
-                  key={index}
-                  onClick={() => toggleCard(index)}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  style={{
-                    backgroundColor: isActive ? "#f8fff9" : "#fff",
-                    borderRadius: "16px",
-                    padding: isMobile ? "16px" : "28px",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    border: isActive ? "2px solid #1e63f9" : "1px solid #eee",
-                    boxShadow: isActive
-                      ? "0 16px 30px rgba(30,99,249,0.15)"
-                      : isHovered
-                      ? "0 10px 22px rgba(0,0,0,0.12)"
-                      : "0 6px 16px rgba(0,0,0,0.08)",
-                  }}
-                >
-                  {/* TITLE */}
-                  <h2
+            <h1
+              style={{
+                fontSize: "1.6rem",
+                fontWeight: "400",
+                marginTop: "12px",
+                marginBottom: "24px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "rgba(255,255,255,0.85)"
+              }}
+            >
+              <FaProjectDiagram color="#5048e5" />
+              {typedText}
+              <span style={{ borderRight: "2px solid #4f46e5", marginLeft: "4px" }} />
+            </h1>
+
+            {/* PROJECT LIST */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+              {projects.map((project, index) => {
+                const isActive = activeCard === index;
+                const isHovered = hoveredCard === index;
+
+                return (
+                  <div
+                    key={index}
+                    onClick={() => toggleCard(index)}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
                     style={{
-                      fontSize: isMobile ? "1.4rem" : "2rem",
-                      margin: 0,
-                      color: isActive || isHovered ? "#1e63f9" : "#222",
-                      transition: "color 0.3s ease",
+                      backgroundColor: isActive ? "#f8fff9" : "#fff",
+                      borderRadius: "16px",
+                      padding: isMobile ? "16px" : "28px",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                      border: isActive ? "2px solid #1e63f9" : "1px solid #eee",
+                      boxShadow: isActive
+                        ? "0 16px 30px rgba(30,99,249,0.15)"
+                        : isHovered
+                          ? "0 10px 22px rgba(0,0,0,0.12)"
+                          : "0 6px 16px rgba(0,0,0,0.08)",
                     }}
                   >
-                    {project.title}
-                  </h2>
-
-                  {/* EXPAND CONTENT */}
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: isActive ? "auto" : 0,
-                      opacity: isActive ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    style={{ overflow: "hidden", marginTop: isActive ? 12 : 0 }}
-                  >
-                    <p
+                    {/* TITLE */}
+                    <h2
                       style={{
-                        fontSize: isMobile ? "0.95rem" : "1rem",
-                        color: "#555",
-                        lineHeight: 1.6,
+                        fontSize: isMobile ? "1.4rem" : "2rem",
+                        margin: 0,
+                        color: isActive || isHovered ? "#1e63f9" : "#222",
+                        transition: "color 0.3s ease",
                       }}
                     >
-                      {project.description}
-                    </p>
+                      {project.title}
+                    </h2>
 
-                    <p style={{ fontSize: "0.9rem", color: "#888", fontStyle: "italic" }}>
-                      {project.tags}
-                    </p>
-
-                    {/* IMAGES */}
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
-                        gap: "14px",
-                        marginTop: "12px",
+                    {/* EXPAND CONTENT */}
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        height: isActive ? "auto" : 0,
+                        opacity: isActive ? 1 : 0,
                       }}
+                      transition={{ duration: 0.3 }}
+                      style={{ overflow: "hidden", marginTop: isActive ? 12 : 0 }}
                     >
-                      {project.images.map((img, i) => (
-                        <div
-                          key={i}
-                          onMouseEnter={() => setHoveredImage(i)}
-                          onMouseLeave={() => setHoveredImage(null)}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedImage(img);
-                          }}
-                          style={{
-                            borderRadius: "12px",
-                            overflow: "hidden",
-                            backgroundColor: "#f2f2f2",
-                            boxShadow:
-                              hoveredImage === i
-                                ? "0 12px 24px rgba(30,99,249,0.2)"
-                                : "0 6px 14px rgba(0,0,0,0.08)",
-                            transform:
-                              hoveredImage === i ? "translateY(-4px)" : "none",
-                            transition: "all 0.25s ease",
-                          }}
-                        >
-                          <img
-                            src={img.src}
-                            alt={img.desc}
-                            style={{
-                              width: "100%",
-                              height: isMobile ? "150px" : "180px",
-                              objectFit: "cover",
+                      <p
+                        style={{
+                          fontSize: isMobile ? "0.95rem" : "1rem",
+                          color: "#555",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {project.description}
+                      </p>
+
+                      <p style={{ fontSize: "0.9rem", color: "#888", fontStyle: "italic" }}>
+                        {project.tags}
+                      </p>
+
+                      {/* IMAGES */}
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
+                          gap: "14px",
+                          marginTop: "12px",
+                        }}
+                      >
+                        {project.images.map((img, i) => (
+                          <div
+                            key={i}
+                            onMouseEnter={() => setHoveredImage(i)}
+                            onMouseLeave={() => setHoveredImage(null)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedImage(img);
                             }}
-                          />
-                          <p
                             style={{
-                              fontSize: "0.8rem",
-                              padding: "8px",
-                              color: "#666",
-                              textAlign: "center",
+                              borderRadius: "12px",
+                              overflow: "hidden",
+                              backgroundColor: "#f2f2f2",
+                              boxShadow:
+                                hoveredImage === i
+                                  ? "0 12px 24px rgba(30,99,249,0.2)"
+                                  : "0 6px 14px rgba(0,0,0,0.08)",
+                              transform:
+                                hoveredImage === i ? "translateY(-4px)" : "none",
+                              transition: "all 0.25s ease",
                             }}
                           >
-                            {img.desc}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              );
-            })}
+                            <img
+                              src={img.src}
+                              alt={img.desc}
+                              style={{
+                                width: "100%",
+                                height: isMobile ? "150px" : "180px",
+                                objectFit: "cover",
+                              }}
+                            />
+                            <p
+                              style={{
+                                fontSize: "0.8rem",
+                                padding: "8px",
+                                color: "#666",
+                                textAlign: "center",
+                              }}
+                            >
+                              {img.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
         </div>
       </div>
 
@@ -303,9 +324,9 @@ export default function Projects() {
 const styles = {
 
   pageWrapper: {
-  position: "relative",
-  width: "100%",
-  minHeight: "100vh",
-  overflow: "hidden",
-}
+    position: "relative",
+    width: "100%",
+    minHeight: "100vh",
+    overflow: "hidden",
+  }
 };

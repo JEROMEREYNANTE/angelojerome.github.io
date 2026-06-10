@@ -16,11 +16,11 @@ import {
 } from "./NavbarElements";
 
 import {
-  FaLaptopCode,
-  FaUserGraduate,
-  FaCode,
-  FaProjectDiagram,
-  FaBriefcase,
+    FaLaptopCode,
+    FaUserGraduate,
+    FaCode,
+    FaProjectDiagram,
+    FaBriefcase,
 } from "react-icons/fa";
 
 
@@ -41,8 +41,8 @@ const Navbar = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    
-const Wrapper = isMobile ? Nav : NavFade;
+
+    const Wrapper = isMobile ? Nav : NavFade;
 
     return (
         <Wrapper>
@@ -51,79 +51,79 @@ const Wrapper = isMobile ? Nav : NavFade;
 
             {/* Desktop Menu */}
             <NavMenu>
-<NavLink to="/" end>
-  <NavItem>
-    <FaLaptopCode color="#000000" />
-    Home
-  </NavItem>
-</NavLink>
+                <NavLink to="/" end>
+                    <NavItem>
+                        <FaLaptopCode color="#000000" />
+                        Home
+                    </NavItem>
+                </NavLink>
                 <NavLink to="/about">
-                  <NavItem>
-                  <FaUserGraduate color="#000000" />
-                    About
-                      </NavItem>
+                    <NavItem>
+                        <FaUserGraduate color="#000000" />
+                        About
+                    </NavItem>
                 </NavLink>
                 <NavLink to="/skills">
-                                  <NavItem>                    <FaCode color="#000000" size={32}/>  
-                    Skills</NavItem>
+                    <NavItem>                    <FaCode color="#000000" size={32} />
+                        Skills</NavItem>
 
                 </NavLink>
                 <NavLink to="/projects">
-                <NavItem>                  <FaProjectDiagram color="#000000" />
-                    Projects & Experience</NavItem>
+                    <NavItem>                  <FaProjectDiagram color="#000000" />
+                        Projects & Experience</NavItem>
 
                 </NavLink>
                 <NavLink to="/contact">
-                <NavItem>                  <FaBriefcase color="#000000" />
-                    Contact</NavItem>
+                    <NavItem>                  <FaBriefcase color="#000000" />
+                        Contact</NavItem>
 
                 </NavLink>
             </NavMenu>
 
             {/* Mobile Menu */}
-<AnimatePresence>
-    {isOpen && (
-        <MobileMenu
-            as={motion.div}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-        >
-            
-                    <MobileNavLink to="/" onClick={closeMenu}>
-                    <NavItem>                                      <FaLaptopCode color="#000000" />
+            <AnimatePresence>
+                {isOpen && (
+                    <MobileMenu
+                        as={motion.div}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                    >
 
-                        Home</NavItem>
+                        <MobileNavLink to="/" onClick={closeMenu}>
+                            <NavItem>                                      <FaLaptopCode color="#000000" />
 
-                    </MobileNavLink>
-                    <MobileNavLink to="/about" onClick={closeMenu}>
-                    <NavItem>                                    <FaUserGraduate color="#000000" />
+                                Home</NavItem>
 
-                        About</NavItem>
-  
-                    </MobileNavLink>
-                    <MobileNavLink to="/skills" onClick={closeMenu}>
-                    <NavItem>                                        <FaCode color="#000000" size={32}/>  
+                        </MobileNavLink>
+                        <MobileNavLink to="/about" onClick={closeMenu}>
+                            <NavItem>                                    <FaUserGraduate color="#000000" />
 
-                        Skills</NavItem>
+                                About</NavItem>
 
-                    </MobileNavLink>
-                    <MobileNavLink to="/projects" onClick={closeMenu}>
-                    <NavItem>                                      <FaProjectDiagram color="#000000" />
+                        </MobileNavLink>
+                        <MobileNavLink to="/skills" onClick={closeMenu}>
+                            <NavItem>                                        <FaCode color="#000000" size={32} />
 
-                        Projects & Experience</NavItem>
+                                Skills</NavItem>
 
-                    </MobileNavLink>
-                    <MobileNavLink to="/contact" onClick={closeMenu}>
-                    <NavItem>                                      <FaBriefcase color="#000000" />
+                        </MobileNavLink>
+                        <MobileNavLink to="/projects" onClick={closeMenu}>
+                            <NavItem>                                      <FaProjectDiagram color="#000000" />
 
-                        Contact</NavItem>
+                                Projects & Experience</NavItem>
 
-                    </MobileNavLink>
-        </MobileMenu>
-    )}
-</AnimatePresence>
+                        </MobileNavLink>
+                        <MobileNavLink to="/contact" onClick={closeMenu}>
+                            <NavItem>                                      <FaBriefcase color="#000000" />
+
+                                Contact</NavItem>
+
+                        </MobileNavLink>
+                    </MobileMenu>
+                )}
+            </AnimatePresence>
 
         </Wrapper>
     );
