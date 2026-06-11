@@ -14,10 +14,7 @@ const pageTransition = {
   duration: 0.4,
 };
 
-
-
 export default function Home() {
-
   const fullText = "Graduated Software Engineering Student";
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
@@ -27,11 +24,12 @@ export default function Home() {
       const timeout = setTimeout(() => {
         setTypedText((prev) => prev + fullText[index]);
         setIndex(index + 1);
-      }, 70); // typing speed
+      }, 70);
 
       return () => clearTimeout(timeout);
     }
   }, [index]);
+
   return (
     <motion.div
       initial="initial"
@@ -40,9 +38,8 @@ export default function Home() {
       variants={pageVariants}
       transition={pageTransition}
     >
-
       <div style={styles.pageWrapper}>
-
+        {/* Background */}
         <div style={styles.backgroundLayer}>
           <Grainient
             color1="#0F172A"
@@ -52,65 +49,42 @@ export default function Home() {
           />
         </div>
 
-        <div style={styles.container}>
-          <div style={styles.card}>
+        {/* HERO */}
+        <div style={styles.hero}>
 
-            <img
-              src="/photo.jpg"
-              alt="Profile"
-              style={{
-                width: "220px",
-                height: "220px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                marginBottom: "10px",
-                border: "4px solid #4f46e5",
-              }}
-            />
-            <h1
-              style={{
-                fontSize: "3.2rem",
-                fontWeight: "700",
-                margin: 0,
-                lineHeight: "1.1",
-                color: "rgba(255,255,255,0.85)"
-              }}
-            >
+          {/* LEFT SIDE */}
+          <div style={styles.left}>
+            <h1 style={styles.name}>
               Angelo Jerome Telano Reynante
             </h1>
 
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: "400",
-                marginTop: "12px",
-                marginBottom: "24px",
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                color: "rgba(255,255,255,0.85)"
-              }}
-            >
+            <h2 style={styles.title}>
               <FaLaptopCode color="#4f46e5" />
-              {typedText}
-              <span style={{ borderRight: "2px solid #4f46e5", marginLeft: "4px" }} />
+              <span style={{ marginLeft: "10px" }}>
+                {typedText}
+              </span>
+              <span style={styles.cursor} />
             </h2>
 
-            <p
-              style={{
-                maxWidth: "100%",
-                fontSize: "1.15rem",
-                lineHeight: "1.8",
-                margin: 0,
-                color: "#ffffff",
-              }}
-            >
+            <p style={styles.description}>
               Passionate about building modern web applications and intuitive user
               experiences. Experienced in front-end development, UI/UX design, and
               collaborative software development through academic and team-based
               projects. Focused on creating clean, efficient, and user-centered digital solutions.
             </p>
           </div>
+
+          {/* RIGHT SIDE */}
+          <div style={styles.right}>
+            <div style={styles.imageWrapper}>
+              <img
+                src="/photo.jpg"
+                alt="Profile"
+                style={styles.image}
+              />
+            </div>
+          </div>
+
         </div>
       </div>
     </motion.div>
@@ -118,43 +92,93 @@ export default function Home() {
 }
 
 const styles = {
-
   pageWrapper: {
     position: "relative",
     width: "100%",
     minHeight: "100vh",
     overflow: "hidden",
   },
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "60px",
-    margin: 0,
-    minHeight: "100vh",
-    zIndex: 2,
-  },
-  card: {
-    maxWidth: "900px",
-    width: "100%",
-    background: "rgba(255, 255, 255, 0.12)",
-    backdropFilter: "blur(20px)",
-    WebkitBackdropFilter: "blur(20px)",
-    padding: "70px 60px",
-    borderRadius: "20px",
-    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "20px",
-    position: "relative",
-    zIndex: 3,
-  },
+
   backgroundLayer: {
     position: "absolute",
     inset: 0,
     zIndex: 0,
     pointerEvents: "none",
-  }
-};
+  },
 
+  hero: {
+    position: "relative",
+    zIndex: 2,
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "0 8vw",
+    gap: "60px",
+  },
+
+  left: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    maxWidth: "650px",
+  },
+
+  right: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  name: {
+    fontSize: "3.2rem",
+    fontWeight: "700",
+    margin: 0,
+    color: "rgba(255,255,255,0.9)",
+    lineHeight: "1.1",
+  },
+
+  title: {
+    fontSize: "1.6rem",
+    fontWeight: "400",
+    marginTop: "18px",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    color: "rgba(255,255,255,0.85)",
+  },
+
+  cursor: {
+    borderRight: "2px solid #4f46e5",
+    marginLeft: "6px",
+    height: "22px",
+  },
+
+  description: {
+    marginTop: "24px",
+    fontSize: "1.15rem",
+    lineHeight: "1.8",
+    color: "rgba(255,255,255,0.85)",
+  },
+
+  imageWrapper: {
+    width: "320px",
+    height: "320px",
+    borderRadius: "50%",
+    padding: "6px",
+    background: "linear-gradient(135deg, #4f46e5, #2563eb, #94a3b8)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  image: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "50%",
+    objectFit: "cover",
+    border: "4px solid rgba(15, 23, 42, 0.8)",
+  },
+};

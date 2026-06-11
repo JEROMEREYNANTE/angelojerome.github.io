@@ -48,7 +48,6 @@ export default function Contact() {
 
       <div style={styles.pageWrapper}>
         <div style={styles.backgroundLayer}>
-
           <Grainient
             color1="#0F172A"
             color2="#2563EB"
@@ -56,57 +55,50 @@ export default function Contact() {
             timeSpeed={1.6}
           />
         </div>
-        <div
-          style={styles.container}
-        >
-          <div
-            style={styles.card}
-          >
-            <h1
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: "700",
-                marginTop: "12px",
-                marginBottom: "24px",
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                color: "rgba(255,255,255,0.85)"
-              }}
-            >
+
+        <div style={styles.container}>
+          <div style={styles.content}>
+
+            {/* HEADER */}
+            <h1 style={styles.title}>
               <FaBriefcase color="#4f46e5" />
               {typedText}
-              <span style={{ borderRight: "2px solid #4f46e5", marginLeft: "4px" }} />
+              <span style={styles.cursor} />
             </h1>
 
-            <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.85)", lineHeight: "1.6" }}>
+            <p style={styles.subtitle}>
               I’m currently open to job opportunities. Feel free to reach out if
               you’d like to collaborate or discuss potential roles.
             </p>
 
-            <div style={infoBox}>
-              <FaEnvelope color="#ffffff" />
-              <span> <strong>Email:</strong> reynantejerome@yahoo.com</span>
+            {/* CONTACT LIST */}
+            <div style={styles.contactList}>
+
+              <div style={styles.item}>
+                <FaEnvelope />
+                <span><strong>Email:</strong> reynantejerome@yahoo.com</span>
+              </div>
+
+              <div style={styles.item}>
+                <FaPhone />
+                <span><strong>Phone:</strong> +1 403 803 9286</span>
+              </div>
+
+              <div style={styles.item}>
+                <FaGithub />
+                <span><strong>GitHub:</strong> github.com/JEROMEREYNANTE</span>
+              </div>
+
+              <div style={styles.item}>
+                <FaMapMarkerAlt />
+                <span><strong>Location:</strong> Calgary, Alberta, Canada</span>
+              </div>
+
             </div>
 
-            <div style={infoBox}>
-              <FaPhone color="#ffffff" />
-              <span> <strong>Phone Number:</strong> +1 403 803 9286</span>
-            </div>
-
-            <div style={infoBox}>
-              <FaGithub color="#ffffff" />
-              <span> <strong>Github:</strong> https://github.com/JEROMEREYNANTE</span>
-            </div>
-
-            <div style={infoBox}>
-              <FaMapMarkerAlt color="#ffffff" />
-              <span> <strong>Location:</strong> Calgary, Alberta, Canada</span>
-            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </div>    </motion.div>
   );
 }
 
@@ -124,9 +116,7 @@ const styles = {
     zIndex: 10,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    padding: "20px",
+    padding: "120px 20px",
   },
   card: {
     maxWidth: "700px",
@@ -149,19 +139,61 @@ const styles = {
     inset: 0,
     zIndex: 0,
     pointerEvents: "none",
-  }
+  },
+  content: {
+    maxWidth: "800px",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    textAlign: "left",
+  },
+
+  title: {
+    fontSize: "2.5rem",
+    fontWeight: "700",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: "12px",
+    color: "rgba(255,255,255,0.9)",
+    marginBottom: "16px",
+  },
+
+  subtitle: {
+    fontSize: "1.1rem",
+    lineHeight: "1.8",
+    color: "rgba(255,255,255,0.75)",
+    maxWidth: "600px",
+    marginBottom: "40px",
+    textAlign: "left", // ✅ add this
+  },
+
+  contactList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
+    width: "100%",
+  },
+
+  item: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    padding: "14px 18px",
+    borderRadius: "12px",
+    background: "rgba(255,255,255,0.08)",
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    color: "#fff",
+    fontSize: "1rem",
+    border: "1px solid rgba(255,255,255,0.08)",
+  },
+
+  cursor: {
+    borderRight: "2px solid #4f46e5",
+    marginLeft: "6px",
+  },
 };
 
-const infoBox = {
-  background: "rgba(255, 255, 255, 0.08)",
-  backdropFilter: "blur(10px)",
-  WebkitBackdropFilter: "blur(10px)",
-  padding: "14px 18px",
-  borderRadius: "12px",
-  fontSize: "1rem",
-  color: "#fff",
-  display: "flex",
-  alignItems: "center",
-  gap: "12px",
-};
 

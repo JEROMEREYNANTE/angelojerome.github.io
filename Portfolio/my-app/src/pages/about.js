@@ -51,45 +51,62 @@ export default function About() {
           />
         </div>
 
-        <div style={styles.container}>
-          <div style={styles.card}>
-            <h1
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: "700",
-                marginTop: "12px",
-                marginBottom: "24px",
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                color: "rgba(255,255,255,0.85)",
-              }}
-            >
-              <FaUserGraduate color="#4f46e5" />
-              {typedText}
-              <span style={{ borderRight: "2px solid #4f46e5", marginLeft: "4px" }} />
-            </h1>
+        <div style={styles.timelineContainer}>
+          <h1 style={styles.timelineTitle}>
+            <FaUserGraduate color="#4f46e5" />
+            {typedText}
+            <span style={{ borderRight: "2px solid #4f46e5", marginLeft: "4px" }} />
+          </h1>
 
-            <p style={styles.text}>
-              I am a recent Software Engineering graduate with practical experience
-              in academic and personal web development, programming, and UI/UX projects.
-            </p>
+          <div style={styles.timeline}>
 
-            <p style={styles.text}>
-              I have developed software using JavaScript, React, Python, Java, HTML,
-              and CSS, with a strong focus on building responsive front-end interfaces
-              and improving user experience through research and user feedback.
-            </p>
+            <div style={styles.timelineItem}>
+              <div style={styles.dot}></div>
+              <div style={styles.content}>
+                <h3 style={styles.heading}>Recent Graduate</h3>
+                <p style={styles.text}>
+                  I am a recent Software Engineering graduate with practical experience
+                  in academic and personal web development, programming, and UI/UX projects.
+                </p>
+              </div>
+            </div>
 
-            <p style={styles.text}>
-              My interests include web application development, Human-Computer Interaction,
-              3D modeling, and UI/UX research, combining both technical and creative skills.
-            </p>
+            <div style={styles.timelineItem}>
+              <div style={styles.dot}></div>
+              <div style={styles.content}>
+                <h3 style={styles.heading}>Development Experience</h3>
+                <p style={styles.text}>
+                  I have developed software using JavaScript, React, Python, Java, HTML,
+                  and CSS, with a strong focus on building responsive front-end interfaces
+                  and improving user experience through research and user feedback.
+                </p>
+              </div>
+            </div>
 
-            <p style={styles.text}>
-              My goal is to grow as a software engineer by gaining industry experience,
-              refining my development skills, and delivering impactful, user-centered solutions.
-            </p>
+            <div style={styles.timelineItem}>
+              <div style={styles.dot}></div>
+              <div style={styles.content}>
+                <h3 style={styles.heading}>Interests</h3>
+                <p style={styles.text}>
+                  My interests include web application development, Human-Computer
+                  Interaction, 3D modeling, and UI/UX research, combining both technical
+                  and creative skills.
+                </p>
+              </div>
+            </div>
+
+            <div style={styles.timelineItem}>
+              <div style={styles.dot}></div>
+              <div style={styles.content}>
+                <h3 style={styles.heading}>Career Goals</h3>
+                <p style={styles.text}>
+                  My goal is to grow as a software engineer by gaining industry
+                  experience, refining my development skills, and delivering impactful,
+                  user-centered solutions.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -98,44 +115,67 @@ export default function About() {
 }
 
 const styles = {
-  container: {
+  timelineContainer: {
     position: "relative",
     zIndex: 10,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    padding: "20px",
-  },
-  card: {
-    maxWidth: "800px",
-    backgroundColor: "rgba(255,255,255,0.9)",
-    backdropFilter: "blur(10px)",
-    padding: "30px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    maxWidth: "900px",
     width: "100%",
-    background: "rgba(255, 255, 255, 0.12)",
-    WebkitBackdropFilter: "blur(20px)",
+    padding: "40px",
+  },
+
+  timelineTitle: {
     display: "flex",
-    flexDirection: "column",
-    gap: "15px",
+    alignItems: "center",
+    gap: "10px",
+    marginBottom: "50px",
+    fontSize: "3.5rem",
+    color: "rgba(255,255,255,0.9)",
+  },
+
+  timeline: {
     position: "relative",
-    zIndex: 3,
+    paddingLeft: "40px",
   },
-  title: {
-    marginBottom: "20px",
-    fontSize: "2.5rem",
-    color: "rgba(255,255,255,0.85)"
 
+  timelineItem: {
+    position: "relative",
+    paddingBottom: "50px",
   },
+
+  dot: {
+    position: "absolute",
+    left: "-49px",
+    top: "8px",
+    width: "16px",
+    height: "16px",
+    borderRadius: "50%",
+    background: "#4f46e5",
+    boxShadow: "0 0 15px #4f46e5",
+    zIndex: 2,
+  },
+
+  content: {
+    background: "rgba(255,255,255,0.08)",
+    backdropFilter: "blur(15px)",
+    WebkitBackdropFilter: "blur(15px)",
+    borderRadius: "16px",
+    padding: "25px",
+    border: "1px solid rgba(255,255,255,0.08)",
+  },
+
+  heading: {
+    margin: "0 0 12px 0",
+    color: "#ffffff",
+    fontSize: "1.2rem",
+  },
+
   text: {
-    fontSize: "1.1rem",
-    lineHeight: "1.6",
-    marginBottom: "15px",
-    color: "rgba(255,255,255,0.85)"
-
+    margin: 0,
+    color: "rgba(255,255,255,0.85)",
+    lineHeight: "1.8",
+    fontSize: "1.05rem",
   },
+
 
   pageWrapper: {
     position: "relative",
