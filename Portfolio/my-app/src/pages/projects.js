@@ -70,6 +70,18 @@ export default function Projects() {
         { src: "/MedicalClinicWebsite/Final2.png", desc: "Responsive layout adaptation for usability" },
       ],
     },
+    {
+      title: "Wordie",
+      cover: "/Wordie/Home.png",
+      description:
+        "Wordie is a word-guessing game built as a web application where players attempt to identify hidden words through a limited number of guesses. The game focuses on core mechanics such as input validation, real-time feedback, and interactive hint systems to guide gameplay. Key features include a structured game loop, a help section explaining rules and mechanics, and support for theme-based visual modes to enhance user experience. The design emphasizes simplicity, responsiveness, and engaging gameplay centered around logic and vocabulary skills.",
+      tags: "HTML • CSS • Javascript",
+      images: [
+        { src: "/Wordie/Home.png", desc: "Wordie game home screen showing core gameplay entry point and main menu options" },
+        { src: "/Wordie/Dark.png", desc: "Wordie gameplay feature demonstrating theme support and core game mechanics in action" },
+        { src: "/Wordie/Help.png", desc: "Wordie help section explaining game rules, hints, and how to play the word-guessing system" },
+      ],
+    },
   ];
 
   const fullText = "Projects & Experience";
