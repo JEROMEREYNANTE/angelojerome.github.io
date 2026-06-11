@@ -131,7 +131,7 @@ export default function Projects() {
       fontWeight: "700",
       display: "flex",
       alignItems: "center",
-      justifyContent: "flex-start", // ✅ change here
+      justifyContent: "flex-start",
       gap: "12px",
       color: "rgba(255,255,255,0.9)",
       textAlign: "left",
