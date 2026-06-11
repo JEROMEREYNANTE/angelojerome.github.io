@@ -292,7 +292,8 @@ export default function Skills() {
                 <motion.div
                   whileHover={{ y: -8, scale: 1.05 }}
                   style={styles.skillCard}
-                >                  <h2 style={styles.cardTitle}>UI/UX & Design</h2>
+                >                  
+                    <h2 style={styles.cardTitle}>UI/UX & Design</h2>
                   <ul style={styles.list}>
                     <li>UI design & prototyping</li>
                     <li>Human-Computer Interaction (HCI)</li>
