@@ -4,28 +4,18 @@
 import styled from "styled-components";
 
 export const Dock = styled.div`
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+    position: fixed;
+    top: 20px;
+    right: 20px;
 
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    gap: 12px;
+    padding: 10px 14px;
 
-  padding: 12px 18px;
-
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(18px);
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.25),
-    inset 0 1px rgba(255, 255, 255, 0.1);
-
-  z-index: 1000;
+    border-radius: 12px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
 `;
 
 export const DockIcon = styled.button`
@@ -46,9 +36,9 @@ export const DockIcon = styled.button`
   color: ${({ active }) => (active ? "#60a5fa" : "#ffffff")};
 
   background: ${({ active }) =>
-        active
-            ? "rgba(96, 165, 250, 0.18)"
-            : "rgba(255,255,255,0.05)"};
+    active
+      ? "rgba(96, 165, 250, 0.18)"
+      : "rgba(255,255,255,0.05)"};
 
   transition: all 0.25s ease;
 

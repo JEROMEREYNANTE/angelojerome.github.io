@@ -166,7 +166,7 @@ const styles = {
     color: "rgba(255,255,255,0.75)",
     maxWidth: "600px",
     marginBottom: "40px",
-    textAlign: "left",
+    textAlign: "left", // ✅ add this
   },
 
   contactList: {
