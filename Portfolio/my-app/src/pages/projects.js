@@ -32,6 +32,7 @@ export default function Projects() {
   const projects = [
     {
       title: "Lotion Website Application",
+      link: "https://github.com/JEROMEREYNANTE/Lotion-Plus.git",
       cover: "/LotionWebsite/Home.png",
       description:
         "A full-stack note-taking web application built using React on the front end and AWS cloud services for backend infrastructure. The application allows users to create, organize, and manage notes efficiently with a focus on responsiveness, performance, and usability. Emphasis was placed on ensuring seamless data persistence, secure storage, and smooth retrieval operations. The project highlights clean UI design principles and scalable cloud-based architecture.",
@@ -45,6 +46,7 @@ export default function Projects() {
     },
     {
       title: "Tartigrade File Management System (Capstone)",
+      link: "https://github.com/JEROMEREYNANTE/ENGG-500A/tree/main",
       cover: "/Tartigrade/Homepage.png",
       description:
         "A collaborative capstone project focused on designing and developing a file management system for the Tardigrade storage architecture. The system was built to improve file organization, accessibility, and workflow efficiency within distributed storage environments. Responsible for front-end development and UI implementation aligned with design specifications, while also contributing to debugging, cross-team collaboration, and performance optimization. The project emphasized maintainability, modular design, and effective teamwork in a full development lifecycle.",
@@ -59,6 +61,7 @@ export default function Projects() {
     },
     {
       title: "Medical Clinic Website Prototype",
+      link: "https://github.com/yumiaery/CPSC481-PROJECT",
       cover: "/MedicalClinicWebsite/Final.png",
       description:
         "A healthcare-focused web application prototype designed to streamline appointment booking and improve patient interaction with clinic services. The project involved designing both initial and refined UI prototypes through iterative feedback cycles, with a strong focus on usability and accessibility. Key improvements included simplifying the scheduling workflow, enhancing navigation clarity, and optimizing the overall user experience for patients and clinic staff. The final design prioritizes efficiency, clarity, and user-centered design principles.",
@@ -72,6 +75,7 @@ export default function Projects() {
     },
     {
       title: "Wordie",
+      link: "https://github.com/ucalgary-ensf381/assignment-05-wordle-JEROMEREYNANTE",
       cover: "/Wordie/Home.png",
       description:
         "Wordie is a word-guessing game built as a web application where players attempt to identify hidden words through a limited number of guesses. The game focuses on core mechanics such as input validation, real-time feedback, and interactive hint systems to guide gameplay. Key features include a structured game loop, a help section explaining rules and mechanics, and support for theme-based visual modes to enhance user experience. The design emphasizes simplicity, responsiveness, and engaging gameplay centered around logic and vocabulary skills.",
@@ -270,7 +274,7 @@ export default function Projects() {
               </h1>
 
               <p style={styles.description}>
-                Here are my top three projects that showcase my experience in software
+                Here are my top four projects that showcase my experience in software
                 development.
               </p>
             </div>
@@ -329,7 +333,26 @@ export default function Projects() {
               <p style={{ color: "#8fb3ff" }}>
                 {selectedProject.tags}
               </p>
-
+              {selectedProject.link && (
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    marginTop: "12px",
+                    marginBottom: "24px",
+                    padding: "10px 18px",
+                    borderRadius: "10px",
+                    background: "#4f46e5",
+                    color: "#fff",
+                    textDecoration: "none",
+                    fontWeight: "600",
+                  }}
+                >
+                  GitHub Repository →
+                </a>
+              )}
               <div style={styles.modalGallery}>
                 {selectedProject.images.map((img, i) => (
                   <motion.div

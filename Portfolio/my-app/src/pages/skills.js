@@ -10,7 +10,8 @@ import {
   FaJava,
   FaGitAlt,
   FaCode,
-  FaWindows, FaGithub
+  FaWindows,
+  FaGithub,
 } from "react-icons/fa";
 
 import { VscVscode } from "react-icons/vsc";
@@ -20,6 +21,7 @@ import {
   SiFigma,
   SiPython,
   SiOpenai,
+  SiEclipseide,
 
 } from "react-icons/si";
 
@@ -231,7 +233,9 @@ export default function Skills() {
     { name: "Python", icon: <SiPython color="#3776AB" /> },
     { name: "Windows", icon: <FaWindows color="#00A4EF" /> },
     { name: "GitHub", icon: <FaGithub color="#ffffff" /> },
-    { name: "Visual Studio Code", icon: <VscVscode color="#ffffff" /> }
+    { name: "Visual Studio Code", icon: <VscVscode color="#007ACC" /> },
+    { name: "Eclipse IDE", icon: <SiEclipseide color="#2C2255" /> },
+
   ];
   return (
     <motion.div
