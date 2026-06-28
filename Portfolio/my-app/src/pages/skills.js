@@ -61,7 +61,52 @@ export default function Skills() {
     }
   }, [index]);
   const styles = {
+    timeline: {
+      position: "relative",
+      maxWidth: "950px",
+      margin: "40px auto",
+      paddingLeft: "60px",
+    },
 
+    timelineLine: {
+      position: "absolute",
+      left: "20px",
+      top: "0",
+      bottom: "0",
+      width: "3px",
+      background: "rgba(255,255,255,0.25)",
+    },
+
+    timelineItem: {
+      position: "relative",
+      marginBottom: "70px",
+    },
+
+    timelineDot: {
+      position: "absolute",
+      left: "-50px",
+      top: "12px",
+      width: "22px",
+      height: "22px",
+      borderRadius: "50%",
+      background: "#5048e5",
+      boxShadow: "0 0 20px rgba(80,72,229,0.8)",
+    },
+
+    timelineTitle: {
+      fontSize: "2rem",
+      fontWeight: "800",
+      color: "#fff",
+      marginBottom: "16px",
+      letterSpacing: "0.5px",
+    },
+
+    timelineList: {
+      color: "rgba(255,255,255,0.9)",
+      fontSize: "1.15rem",
+      lineHeight: "2.1",
+      paddingLeft: "24px",
+    },
     pageWrapper: {
       position: "relative",
       width: "100%",
@@ -193,12 +238,13 @@ export default function Skills() {
       marginLeft: "4px",
     },
     paragraph: {
-      fontSize: "1.15rem",
-      lineHeight: "1.8",
-      color: "rgba(255,255,255,0.75)",
-      maxWidth: "750px",
-      zIndex: 3,
-
+      fontSize: "1.4rem",
+      lineHeight: "2.05",
+      color: "rgba(255,255,255,0.92)",
+      maxWidth: "900px",
+      fontWeight: "400",
+      letterSpacing: "0.3px",
+      zIndex: "3",
     },
     cardTitle: {
       fontSize: "1.2rem",
@@ -276,59 +322,106 @@ export default function Skills() {
               experience through research and feedback.
             </p>
             {/* BOTTOM GRID CARDS */}
-            <div style={styles.gridWrapper}>
-              <div style={styles.grid}>
+            <div style={styles.timeline}>
+              <div style={styles.timelineLine} />
 
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.05 }}
-                  style={styles.skillCard}
-                >                  <h2 style={styles.cardTitle}>Technical Skills</h2>
-                  <ul style={styles.list}>
-                    <li>HTML & CSS</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>Java</li>
-                    <li>Git</li>
-                    <li>Figma</li>
-                  </ul></motion.div>
+              <motion.div
+                style={styles.timelineItem}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <div style={styles.timelineDot} />
+                <h2 style={styles.timelineTitle}>💻 Technical Skills</h2>
 
+                <ul style={styles.timelineList}>
+                  <li>HTML & CSS</li>
+                  <li>JavaScript</li>
+                  <li>React</li>
+                  <li>Java</li>
+                  <li>Git</li>
+                  <li>Figma</li>
+                  <li>UI Design & Prototyping</li>
+                  <li>Wireframing</li>
+                </ul>
+              </motion.div>
 
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.05 }}
-                  style={styles.skillCard}
-                >                  <h2 style={styles.cardTitle}>UI/UX & Design</h2>
-                  <ul style={styles.list}>
-                    <li>UI design & prototyping</li>
-                    <li>Human-Computer Interaction (HCI)</li>
-                    <li>User research</li>
-                    <li>Wireframing</li>
-                  </ul></motion.div>
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.05 }}
-                  style={styles.skillCard}
-                >
-                  <h2 style={styles.cardTitle}>Strengths</h2>
-                  <ul style={styles.list}>
-                    <li>User-centered design focus</li>
-                    <li>Turning ideas into interfaces</li>
-                    <li>Continuous learning mindset</li>
-                    <li>UI consistency & attention to detail</li>
-                  </ul></motion.div>
-              </div>
+              <motion.div
+                style={styles.timelineItem}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <div style={styles.timelineDot} />
+                <h2 style={styles.timelineTitle}>🛠 Development Practices</h2>
+
+                <ul style={styles.timelineList}>
+                  <li>Responsive Web Design</li>
+                  <li>User-Centered Development</li>
+                  <li>Human-Computer Interaction (HCI)</li>
+                  <li>User Research</li>
+                  <li>Version Control (Git/GitHub)</li>
+                  <li>Accessibility Awareness</li>
+                </ul>
+              </motion.div>
+
+              <motion.div
+                style={styles.timelineItem}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
+                <div style={styles.timelineDot} />
+                <h2 style={styles.timelineTitle}>🌟 Strengths</h2>
+
+                <ul style={styles.timelineList}>
+                  <li>Problem Solving</li>
+                  <li>Attention to Detail</li>
+                  <li>Continuous Learning</li>
+                  <li>User-Centered Thinking</li>
+                  <li>Collaboration & Communication</li>
+                  <li>Turning Ideas Into Solutions</li>
+                </ul>
+              </motion.div>
             </div>
 
             {/* TOOLS SECTION */}
-            <div style={styles.toolswrapper}>
-              <h2 style={styles.toolsTitle}>
+            {/* TOOLS SECTION */}
+            <motion.div
+              style={styles.toolswrapper}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h2
+                style={styles.toolsTitle}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
                 Tools & Software Applications I Used
-              </h2>
+              </motion.h2>
 
               <div style={styles.toolsGrid}>
                 {icons.map((tool, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ y: -8, scale: 1.05 }}
                     style={styles.toolItem}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.08,
+                    }}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.05,
+                    }}
                   >
                     <div style={styles.toolIcon}>
                       {tool.icon}
@@ -337,11 +430,12 @@ export default function Skills() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
     </motion.div>
   );
 }
+
 

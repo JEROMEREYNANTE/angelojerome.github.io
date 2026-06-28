@@ -1,9 +1,13 @@
 // pages/about.js
+
 import Grainient from "../components/Background/Grainient";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaUserGraduate,
+  FaLaptopCode,
+  FaPalette,
+  FaRocket,
 } from "react-icons/fa";
 
 const pageVariants = {
@@ -16,8 +20,56 @@ const pageTransition = {
   duration: 0.4,
 };
 
-export default function About() {
+const timelineData = [
+  {
+    icon: FaUserGraduate,
+    title: "Recent Graduate",
+    text: "I am a recent Software Engineering graduate with practical experience in academic and personal web development, programming, and UI/UX projects.",
+  },
+  {
+    icon: FaLaptopCode,
+    title: "Development Experience",
+    text: "I have developed software using JavaScript, React, Python, Java, HTML, and CSS, with a strong focus on building responsive front-end interfaces and improving user experience through research and user feedback.",
+  },
+  {
+    icon: FaPalette,
+    title: "Interests",
+    text: "My interests include web application development, Human-Computer Interaction, 3D modeling, and UI/UX research, combining both technical and creative skills.",
+  },
+  {
+    icon: FaRocket,
+    title: "Career Goals",
+    text: "My goal is to grow as a software engineer by gaining industry experience, refining my development skills, and delivering impactful, user-centered solutions.",
+  },
+];
 
+function TimelineItem({ icon: Icon, title, text }) {
+  return (
+    <motion.div
+      style={styles.timelineItem}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+    >
+      <div style={styles.dot}></div>
+
+      <div style={styles.content}>
+        <h3 style={styles.heading}>
+          <Icon style={styles.icon} />
+          {title}
+        </h3>
+
+        <p style={styles.text}>{text}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function About() {
   const fullText = "About Me";
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
@@ -27,11 +79,12 @@ export default function About() {
       const timeout = setTimeout(() => {
         setTypedText((prev) => prev + fullText[index]);
         setIndex(index + 1);
-      }, 70); // typing speed
+      }, 70);
 
       return () => clearTimeout(timeout);
     }
   }, [index]);
+
   return (
     <motion.div
       initial="initial"
@@ -40,7 +93,6 @@ export default function About() {
       variants={pageVariants}
       transition={pageTransition}
     >
-
       <div style={styles.pageWrapper}>
         <div style={styles.backgroundLayer}>
           <Grainient
@@ -55,58 +107,31 @@ export default function About() {
           <h1 style={styles.timelineTitle}>
             <FaUserGraduate color="#4f46e5" />
             {typedText}
-            <span style={{ borderRight: "2px solid #4f46e5", marginLeft: "4px" }} />
+            <span
+              style={{
+                borderRight: "2px solid #4f46e5",
+                marginLeft: "4px",
+              }}
+            />
           </h1>
 
+          <p style={styles.subtitle}>
+            Software Engineering graduate focused on building responsive,
+            accessible, and user-centered web applications through modern
+            development practices and thoughtful design.
+          </p>
+
           <div style={styles.timeline}>
+            <div style={styles.timelineLine}></div>
 
-            <div style={styles.timelineItem}>
-              <div style={styles.dot}></div>
-              <div style={styles.content}>
-                <h3 style={styles.heading}>Recent Graduate</h3>
-                <p style={styles.text}>
-                  I am a recent Software Engineering graduate with practical experience
-                  in academic and personal web development, programming, and UI/UX projects.
-                </p>
-              </div>
-            </div>
-
-            <div style={styles.timelineItem}>
-              <div style={styles.dot}></div>
-              <div style={styles.content}>
-                <h3 style={styles.heading}>Development Experience</h3>
-                <p style={styles.text}>
-                  I have developed software using JavaScript, React, Python, Java, HTML,
-                  and CSS, with a strong focus on building responsive front-end interfaces
-                  and improving user experience through research and user feedback.
-                </p>
-              </div>
-            </div>
-
-            <div style={styles.timelineItem}>
-              <div style={styles.dot}></div>
-              <div style={styles.content}>
-                <h3 style={styles.heading}>Interests</h3>
-                <p style={styles.text}>
-                  My interests include web application development, Human-Computer
-                  Interaction, 3D modeling, and UI/UX research, combining both technical
-                  and creative skills.
-                </p>
-              </div>
-            </div>
-
-            <div style={styles.timelineItem}>
-              <div style={styles.dot}></div>
-              <div style={styles.content}>
-                <h3 style={styles.heading}>Career Goals</h3>
-                <p style={styles.text}>
-                  My goal is to grow as a software engineer by gaining industry
-                  experience, refining my development skills, and delivering impactful,
-                  user-centered solutions.
-                </p>
-              </div>
-            </div>
-
+            {timelineData.map((item, index) => (
+              <TimelineItem
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                text={item.text}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -115,42 +140,78 @@ export default function About() {
 }
 
 const styles = {
+  pageWrapper: {
+    position: "relative",
+    width: "100%",
+    minHeight: "100vh",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "100px 20px",
+  },
+
+  backgroundLayer: {
+    position: "absolute",
+    inset: 0,
+    zIndex: 0,
+    pointerEvents: "none",
+  },
+
   timelineContainer: {
     position: "relative",
     zIndex: 10,
-    maxWidth: "900px",
+    maxWidth: "850px",
     width: "100%",
-    padding: "40px",
   },
 
   timelineTitle: {
     display: "flex",
     alignItems: "center",
-    gap: "10px",
-    marginBottom: "50px",
+    gap: "12px",
+    marginBottom: "20px",
     fontSize: "3.5rem",
-    color: "rgba(255,255,255,0.9)",
+    color: "rgba(255,255,255,0.95)",
+    fontWeight: "700",
+  },
+
+  subtitle: {
+    color: "rgba(255,255,255,0.75)",
+    fontSize: "1.15rem",
+    lineHeight: "1.8",
+    maxWidth: "700px",
+    marginBottom: "70px",
   },
 
   timeline: {
     position: "relative",
-    paddingLeft: "40px",
+    paddingLeft: "50px",
+  },
+
+  timelineLine: {
+    position: "absolute",
+    left: "7px",
+    top: "10px",
+    bottom: "10px",
+    width: "2px",
+    background:
+      "linear-gradient(to bottom, #4f46e5, rgba(79,70,229,0.15))",
   },
 
   timelineItem: {
     position: "relative",
-    paddingBottom: "50px",
+    paddingBottom: "70px",
   },
 
   dot: {
     position: "absolute",
-    left: "-49px",
-    top: "8px",
+    left: "-50px",
+    top: "12px",
     width: "16px",
     height: "16px",
     borderRadius: "50%",
     background: "#4f46e5",
-    boxShadow: "0 0 15px #4f46e5",
+    boxShadow: "0 0 15px rgba(79,70,229,0.9)",
     zIndex: 2,
   },
 
@@ -158,36 +219,30 @@ const styles = {
     background: "rgba(255,255,255,0.08)",
     backdropFilter: "blur(15px)",
     WebkitBackdropFilter: "blur(15px)",
-    borderRadius: "16px",
-    padding: "25px",
+    borderRadius: "18px",
+    padding: "28px",
     border: "1px solid rgba(255,255,255,0.08)",
+    transition: "all 0.3s ease",
   },
 
   heading: {
-    margin: "0 0 12px 0",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    margin: "0 0 15px 0",
     color: "#ffffff",
-    fontSize: "1.2rem",
+    fontSize: "1.25rem",
+    fontWeight: "600",
+  },
+
+  icon: {
+    color: "#4f46e5",
   },
 
   text: {
     margin: 0,
     color: "rgba(255,255,255,0.85)",
-    lineHeight: "1.8",
+    lineHeight: "1.9",
     fontSize: "1.05rem",
   },
-
-
-  pageWrapper: {
-    position: "relative",
-    width: "100%",
-    minHeight: "100vh",
-    overflow: "hidden",
-  },
-  backgroundLayer: {
-    position: "absolute",
-    inset: 0,
-    zIndex: 0,
-    pointerEvents: "none",
-  },
 };
-

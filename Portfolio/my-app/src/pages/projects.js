@@ -402,20 +402,42 @@ export default function Projects() {
               cursor: "zoom-out",
             }}
           >
-            <motion.img
-              src={selectedImage.src}
-              alt={selectedImage.desc}
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              style={{
-                maxWidth: "90%",
-                maxHeight: "90%",
-                borderRadius: "12px",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
-              }}
+            <div
               onClick={(e) => e.stopPropagation()}
-            />
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                maxWidth: "95%",
+              }}
+            >
+              <motion.img
+                src={selectedImage.src}
+                alt={selectedImage.desc}
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.8 }}
+                style={{
+                  maxWidth: "90%",
+                  maxHeight: "80vh",
+                  borderRadius: "12px",
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+                }}
+              />
+
+              <p
+                style={{
+                  color: "#fff",
+                  marginTop: "16px",
+                  textAlign: "center",
+                  fontSize: "1rem",
+                  maxWidth: "800px",
+                  lineHeight: "1.6",
+                }}
+              >
+                {selectedImage.desc}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
