@@ -343,6 +343,10 @@ export default function Skills() {
                   <li>Figma</li>
                   <li>UI Design & Prototyping</li>
                   <li>Wireframing</li>
+                  <li>Python</li>
+                  <li>Feature Development</li>
+                  <li>Debugging & Troubleshooting</li>
+                  <li>Code Optimization</li>
                 </ul>
               </motion.div>
 
@@ -363,6 +367,11 @@ export default function Skills() {
                   <li>User Research</li>
                   <li>Version Control (Git/GitHub)</li>
                   <li>Accessibility Awareness</li>
+                  <li>Agile Development</li>
+                  <li>Testing & Validation</li>
+                  <li>Problem Solving</li>
+                  <li>Requirements Analysis</li>
+                  <li>Software Documentation</li>
                 </ul>
               </motion.div>
 
@@ -374,15 +383,15 @@ export default function Skills() {
                 transition={{ delay: 0.4 }}
               >
                 <div style={styles.timelineDot} />
-                <h2 style={styles.timelineTitle}>🌟 Strengths</h2>
+                <h2 style={styles.timelineTitle}>🤝 Collaboration & User Experience</h2>
 
                 <ul style={styles.timelineList}>
-                  <li>Problem Solving</li>
-                  <li>Attention to Detail</li>
+                  <li>Team Collaboration</li>
+                  <li>Technical Communication</li>
+                  <li>Code Reviews</li>
+                  <li>User Feedback Analysis</li>
+                  <li>UI/UX Awareness</li>
                   <li>Continuous Learning</li>
-                  <li>User-Centered Thinking</li>
-                  <li>Collaboration & Communication</li>
-                  <li>Turning Ideas Into Solutions</li>
                 </ul>
               </motion.div>
             </div>

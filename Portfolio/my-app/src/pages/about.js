@@ -47,13 +47,9 @@ function TimelineItem({ icon: Icon, title, text }) {
   return (
     <motion.div
       style={styles.timelineItem}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.6,
-        ease: "easeOut",
-      }}
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
     >
       <div style={styles.dot}></div>
 
@@ -116,9 +112,8 @@ export default function About() {
           </h1>
 
           <p style={styles.subtitle}>
-            Software Engineering graduate focused on building responsive,
-            accessible, and user-centered web applications through modern
-            development practices and thoughtful design.
+            Building user-focused digital experiences through software
+            engineering, front-end development, and thoughtful design.
           </p>
 
           <div style={styles.timeline}>
@@ -194,8 +189,8 @@ const styles = {
     top: "10px",
     bottom: "10px",
     width: "2px",
-    background:
-      "linear-gradient(to bottom, #4f46e5, rgba(79,70,229,0.15))",
+    background: "rgba(255,255,255,0.25)",
+
   },
 
   timelineItem: {
