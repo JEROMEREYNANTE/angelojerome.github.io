@@ -67,10 +67,10 @@ export default function Home() {
             </h2>
 
             <p style={styles.description}>
-              Passionate about building modern web applications and intuitive user
-              experiences. Experienced in front-end development, UI/UX design, and
-              collaborative software development through academic and team-based
-              projects. Focused on creating clean, efficient, and user-centered digital solutions.
+              Passionate about building modern web applications and scalable software solutions.
+              Experienced in front-end development, UI implementation, and collaborative development
+              through academic and team-based projects. Focused on writing clean, maintainable code
+              and delivering reliable, user-focused features across the stack.
             </p>
           </div>
 

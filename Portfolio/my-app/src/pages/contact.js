@@ -69,7 +69,7 @@ export default function Contact() {
 
             {/* AVAILABILITY BADGE */}
             <div style={styles.status}>
-              🟢 Available for Full-Time Opportunities
+              🟢 Available for Job Opportunities
             </div>
 
             {/* SUMMARY */}
