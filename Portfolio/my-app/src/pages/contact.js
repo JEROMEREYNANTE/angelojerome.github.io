@@ -93,7 +93,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="/resume.pdf"
+                href="/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={styles.secondaryButton}
