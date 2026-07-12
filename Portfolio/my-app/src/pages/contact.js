@@ -8,7 +8,6 @@ import {
   FaPhone,
   FaGithub,
   FaMapMarkerAlt,
-  FaLinkedin,
   FaDownload,
   FaBriefcase,
 } from "react-icons/fa";
