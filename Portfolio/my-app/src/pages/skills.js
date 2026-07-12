@@ -64,13 +64,14 @@ export default function Skills() {
     timeline: {
       position: "relative",
       maxWidth: "950px",
+      width: "100%",
       margin: "40px auto",
-      paddingLeft: "60px",
+      paddingLeft: isMobile ? "35px" : "60px",
     },
 
     timelineLine: {
       position: "absolute",
-      left: "20px",
+      left: isMobile ? "10px" : "20px",
       top: "0",
       bottom: "0",
       width: "3px",
@@ -84,17 +85,17 @@ export default function Skills() {
 
     timelineDot: {
       position: "absolute",
-      left: "-50px",
+      left: isMobile ? "-34px" : "-50px",
       top: "12px",
-      width: "22px",
-      height: "22px",
+      width: isMobile ? "18px" : "22px",
+      height: isMobile ? "18px" : "22px",
       borderRadius: "50%",
       background: "#5048e5",
       boxShadow: "0 0 20px rgba(80,72,229,0.8)",
     },
 
     timelineTitle: {
-      fontSize: "2rem",
+      fontSize: isMobile ? "1.4rem" : "2rem",
       fontWeight: "800",
       color: "#fff",
       marginBottom: "16px",
@@ -103,9 +104,9 @@ export default function Skills() {
 
     timelineList: {
       color: "rgba(255,255,255,0.9)",
-      fontSize: "1.15rem",
-      lineHeight: "2.1",
-      paddingLeft: "24px",
+      fontSize: isMobile ? "0.95rem" : "1.15rem",
+      lineHeight: "2",
+      paddingLeft: isMobile ? "18px" : "24px",
     },
     pageWrapper: {
       position: "relative",
@@ -118,7 +119,7 @@ export default function Skills() {
       justifyContent: "center",
       alignItems: "flex-start",
       minHeight: "100vh",
-      padding: "80px 20px",
+      padding: isMobile ? "100px 20px 40px" : "80px 20px",
       zIndex: 2,
     },
     card: {
@@ -146,10 +147,10 @@ export default function Skills() {
     wrapper: {
       display: "flex",
       flexDirection: "column",
-      gap: "35px",
+      gap: isMobile ? "25px" : "35px",
       maxWidth: "1100px",
       width: "100%",
-      marginTop: "40px",
+      marginTop: isMobile ? "20px" : "40px",
     },
     mainCard: {
       padding: "40px",
@@ -171,23 +172,25 @@ export default function Skills() {
     },
     toolsGrid: {
       display: "grid",
-      gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(5, 1fr)",
-      gap: "20px",
-      marginTop: "10px",
-
+      gridTemplateColumns: isMobile
+        ? "repeat(2, 1fr)"
+        : "repeat(5, 1fr)",
+      gap: isMobile ? "12px" : "20px",
+      marginTop: "20px",
     },
     toolItem: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      padding: "20px",
+      padding: isMobile ? "15px 10px" : "20px",
       borderRadius: "14px",
       background: "rgba(255,255,255,0.08)",
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",
       color: "rgba(255,255,255,0.85)",
-      fontSize: "0.9rem",
+      fontSize: isMobile ? "0.75rem" : "0.9rem",
+      textAlign: "center",
       transition: "transform 0.2s ease",
       cursor: "pointer",
     },
@@ -199,11 +202,12 @@ export default function Skills() {
     },
 
     toolsTitle: {
-      fontSize: "2rem",
+      fontSize: isMobile ? "1.5rem" : "2rem",
       fontWeight: "700",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      textAlign: "center",
       gap: "12px",
       color: "rgba(255,255,255,0.9)",
     },
@@ -224,27 +228,31 @@ export default function Skills() {
 
     },
     title: {
-      fontSize: "2.6rem",
+      fontSize: isMobile ? "2rem" : "2.6rem",
       fontWeight: "800",
       display: "flex",
       alignItems: "center",
+      justifyContent: isMobile ? "center" : "flex-start",
+      flexWrap: "wrap",
       gap: "12px",
       color: "rgba(255,255,255,0.95)",
       letterSpacing: "0.5px",
       zIndex: 1,
+      textAlign: isMobile ? "center" : "left",
     },
     cursor: {
       borderRight: "2px solid #4f46e5",
       marginLeft: "4px",
     },
     paragraph: {
-      fontSize: "1.4rem",
-      lineHeight: "2.05",
+      fontSize: isMobile ? "1rem" : "1.4rem",
+      lineHeight: "1.9",
       color: "rgba(255,255,255,0.92)",
       maxWidth: "900px",
       fontWeight: "400",
       letterSpacing: "0.3px",
       zIndex: "3",
+      textAlign: isMobile ? "center" : "left",
     },
     cardTitle: {
       fontSize: "1.2rem",
@@ -258,7 +266,7 @@ export default function Skills() {
       paddingLeft: "18px",
     },
     toolIcon: {
-      fontSize: "34px",
+      fontSize: isMobile ? "28px" : "34px",
       marginBottom: "10px",
       display: "flex",
       alignItems: "center",

@@ -3,6 +3,7 @@
 import Grainient from "../components/Background/Grainient";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
+
 import {
   FaProjectDiagram,
 } from "react-icons/fa";
@@ -105,15 +106,16 @@ export default function Projects() {
   const styles = {
 
     header: {
-      textAlign: "center",
-      marginBottom: "50px",
+      textAlign: isMobile ? "center" : "left",
+      marginBottom: isMobile ? "35px" : "50px",
+      width: "100%",
     },
     contentWrapper: {
       width: "100%",
       maxWidth: "1200px",
       display: "flex",
       flexDirection: "column",
-      alignItems: "flex-start",
+      alignItems: isMobile ? "center" : "flex-start",
       margin: "0 auto",
     },
     pageWrapper: {
@@ -131,36 +133,55 @@ export default function Projects() {
     },
 
     title: {
-      fontSize: "2rem",
+      fontSize: isMobile ? "1.8rem" : "2rem",
       fontWeight: "700",
       display: "flex",
       alignItems: "center",
-      justifyContent: "flex-start", // ✅ change here
+      justifyContent: isMobile ? "center" : "flex-start",
+      flexWrap: "wrap",
       gap: "12px",
       color: "rgba(255,255,255,0.9)",
-      textAlign: "left",
+      textAlign: isMobile ? "center" : "left",
     },
 
-
+    closeButton: {
+      position: "absolute",
+      top: "15px",
+      right: "20px",
+      width: "40px",
+      height: "40px",
+      borderRadius: "50%",
+      border: "none",
+      background: "rgba(255,255,255,0.1)",
+      color: "#fff",
+      fontSize: "1.5rem",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      transition: "0.2s ease",
+    },
 
     description: {
       maxWidth: "700px",
-      fontSize: "1.1rem",
+      fontSize: isMobile ? "1rem" : "1.1rem",
       lineHeight: "1.8",
       color: "rgba(255,255,255,0.8)",
       marginTop: "12px",
+      textAlign: isMobile ? "center" : "left",
     },
     projectRow: {
       display: "flex",
       justifyContent: "center",
       alignItems: "stretch",
-      gap: "24px",
+      gap: isMobile ? "20px" : "24px",
       flexWrap: "wrap",
       width: "100%",
     },
 
     projectCard: {
-      width: "350px",
+      width: isMobile ? "100%" : "350px",
+      maxWidth: "350px",
       background: "rgba(255,255,255,0.08)",
       backdropFilter: "blur(20px)",
       WebkitBackdropFilter: "blur(20px)",
@@ -171,19 +192,38 @@ export default function Projects() {
       boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
     },
 
+    imageCloseButton: {
+      position: "fixed",
+      top: "25px",
+      right: "30px",
+      width: "45px",
+      height: "45px",
+      borderRadius: "50%",
+      border: "none",
+      background: "rgba(255,255,255,0.15)",
+      color: "#fff",
+      fontSize: "1.7rem",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 10001,
+      transition: "0.2s ease",
+    },
+
     projectImage: {
       width: "100%",
-      height: "240px",
+      height: isMobile ? "200px" : "240px",
       objectFit: "cover",
     },
 
     projectContent: {
-      padding: "20px",
+      padding: isMobile ? "16px" : "20px",
     },
 
     projectTitle: {
       color: "#fff",
-      fontSize: "1.3rem",
+      fontSize: isMobile ? "1.1rem" : "1.3rem",
       marginBottom: "10px",
     },
     backgroundLayer: {
@@ -196,7 +236,8 @@ export default function Projects() {
     },
     projectTags: {
       color: "rgba(255,255,255,0.7)",
-      fontSize: "0.9rem",
+      fontSize: isMobile ? "0.8rem" : "0.9rem",
+      lineHeight: "1.5",
     },
     modalOverlay: {
       position: "fixed",
@@ -210,19 +251,22 @@ export default function Projects() {
     },
 
     projectModal: {
-      width: "100%",
+      position: "relative",
+      width: isMobile ? "95%" : "100%",
       maxWidth: "1100px",
       maxHeight: "85vh",
       overflowY: "auto",
       borderRadius: "24px",
-      padding: "30px",
+      padding: isMobile ? "20px" : "30px",
       background: "rgba(15,23,42,0.95)",
       backdropFilter: "blur(20px)",
     },
 
     modalGallery: {
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+      gridTemplateColumns: isMobile
+        ? "1fr"
+        : "repeat(auto-fit,minmax(250px,1fr))",
       gap: "16px",
       marginTop: "24px",
     },
@@ -261,7 +305,7 @@ export default function Projects() {
         <div
           style={{
             ...styles.container,
-            padding: isMobile ? "20px" : "60px",
+            padding: isMobile ? "90px 20px 40px" : "60px",
           }}
         >
           <div style={styles.contentWrapper}>
@@ -322,6 +366,14 @@ export default function Projects() {
               exit={{ scale: 0.9 }}
               style={styles.projectModal}
             >
+
+              {/* CLOSE BUTTON */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                style={styles.closeButton}
+              >
+                ✕
+              </button>
               <h2 style={{ color: "#fff" }}>
                 {selectedProject.title}
               </h2>
@@ -402,6 +454,17 @@ export default function Projects() {
               cursor: "zoom-out",
             }}
           >
+
+            {/* CLOSE BUTTON */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+              style={styles.imageCloseButton}
+            >
+              ✕
+            </button>
             <div
               onClick={(e) => e.stopPropagation()}
               style={{
@@ -418,8 +481,8 @@ export default function Projects() {
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
                 style={{
-                  maxWidth: "90%",
-                  maxHeight: "80vh",
+                  maxWidth: isMobile ? "95%" : "90%",
+                  maxHeight: isMobile ? "70vh" : "80vh",
                   borderRadius: "12px",
                   boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
                 }}
@@ -443,5 +506,7 @@ export default function Projects() {
       </AnimatePresence>
     </motion.div>
   );
+
+
 }
 
