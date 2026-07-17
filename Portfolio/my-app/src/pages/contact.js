@@ -9,7 +9,7 @@ import {
   FaMapMarkerAlt,
   FaDownload,
   FaLinkedin,
-  FaComments
+  FaBriefcase
 } from "react-icons/fa";
 
 const pageVariants = {
@@ -78,6 +78,30 @@ export default function Contact() {
       padding: isMobile ? "80px 20px" : "140px 20px"
     },
 
+
+    status: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      marginBottom: "20px",
+      padding: "10px 22px",
+      borderRadius: "999px",
+      background: "rgba(34,197,94,0.12)",
+      border: "1px solid rgba(34,197,94,0.4)",
+      color: "#86efac",
+      fontWeight: "600",
+      fontSize: "1rem",
+      width: "fit-content",
+    },
+
+
+    subtitle: {
+      fontSize: isMobile ? "1rem" : "1.1rem",
+      lineHeight: "1.8",
+      color: "rgba(255,255,255,0.75)",
+      maxWidth: "650px",
+      marginBottom: "30px",
+    },
 
     content: {
       maxWidth: "850px",
@@ -240,17 +264,32 @@ export default function Contact() {
 
 
             <h1 style={styles.title}>
-              <FaComments color="#4f46e5" />
+              <FaBriefcase color="#4f46e5" />
               {typedText}
               <span style={styles.cursor} />
             </h1>
 
+            <div style={styles.status}>
+              <motion.span
+                animate={{
+                  scale: [1, 1.15, 1],
+                  opacity: [0.7, 1, 0.7],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                🟢
+              </motion.span>
 
+              Available for Job Opportunities
+            </div>
 
-            <p style={styles.description}>
-              Have a project idea, job opportunity, or just want to connect?
-              Feel free to reach out. I'm always open to discussing software
-              development, UI/UX design, and new opportunities.
+            <p style={styles.subtitle}>
+              I'm looking for opportunities to contribute to impactful products,
+              work with collaborative teams, and continue growing as a developer.
             </p>
 
 

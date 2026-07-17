@@ -60,8 +60,18 @@ function TimelineItem({ item, styles }) {
   return (
     <motion.div
       style={styles.timelineItem}
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{
+        opacity: 0,
+        y: 30
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0
+      }}
+      transition={{
+        duration: 0.5,
+        ease: "easeOut"
+      }}
       viewport={{ once: true }}
     >
 
@@ -97,6 +107,7 @@ export default function About() {
   const [index, setIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
 
 
@@ -125,20 +136,19 @@ export default function About() {
 
   // Responsive detection
   useEffect(() => {
+    setMounted(true);
 
     const resize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-
     resize();
 
     window.addEventListener("resize", resize);
 
-
-    return () =>
+    return () => {
       window.removeEventListener("resize", resize);
-
+    };
 
   }, []);
 
@@ -156,8 +166,9 @@ export default function About() {
       overflow: "hidden",
       display: "flex",
       justifyContent: "center",
-      alignItems: "center",
-      padding: isMobile ? "80px 20px" : "100px 20px",
+      alignItems: "flex-start",
+      boxSizing: "border-box",
+      padding: isMobile ? "90px 15px 50px" : "120px 30px",
     },
 
 
@@ -176,21 +187,22 @@ export default function About() {
       zIndex: 10,
       width: "100%",
       maxWidth: "850px",
+      boxSizing: "border-box",
     },
-
 
 
     timelineTitle: {
       display: "flex",
       alignItems: "center",
-      flexWrap: "wrap",
       justifyContent: isMobile ? "center" : "flex-start",
       gap: "12px",
       marginBottom: "20px",
-      fontSize: isMobile ? "2.2rem" : "3.5rem",
+      fontSize: isMobile ? "2rem" : "3.5rem",
       color: "rgba(255,255,255,0.95)",
       fontWeight: "700",
       textAlign: isMobile ? "center" : "left",
+      lineHeight: "1.2",
+      wordBreak: "break-word",
     },
 
 
@@ -199,22 +211,29 @@ export default function About() {
       color: "rgba(255,255,255,0.75)",
       fontSize: isMobile ? "1rem" : "1.15rem",
       lineHeight: "1.8",
+
+      maxWidth: "700px",
+
       marginBottom: isMobile ? "40px" : "70px",
+
       textAlign: isMobile ? "center" : "left",
+
+      overflowWrap: "break-word",
     },
 
 
 
     timeline: {
       position: "relative",
-      paddingLeft: isMobile ? "35px" : "50px",
+      width: "100%",
+      boxSizing: "border-box",
+      paddingLeft: isMobile ? "28px" : "50px",
     },
-
 
 
     timelineLine: {
       position: "absolute",
-      left: isMobile ? "5px" : "7px",
+      left: isMobile ? "2px" : "7px",
       top: "10px",
       bottom: "10px",
       width: "2px",
@@ -232,10 +251,10 @@ export default function About() {
 
     dot: {
       position: "absolute",
-      left: isMobile ? "-35px" : "-50px",
-      top: "12px",
-      width: "16px",
-      height: "16px",
+      left: isMobile ? "-30px" : "-50px",
+      top: "15px",
+      width: isMobile ? "12px" : "16px",
+      height: isMobile ? "12px" : "16px",
       borderRadius: "50%",
       background: "#4f46e5",
       boxShadow: "0 0 15px rgba(79,70,229,0.9)",
@@ -244,10 +263,17 @@ export default function About() {
 
 
     content: {
+      width: "100%",
+      maxWidth: "100%",
+      boxSizing: "border-box",
+      overflow: "hidden",
+
       background: "rgba(255,255,255,0.08)",
       backdropFilter: "blur(15px)",
       borderRadius: "18px",
-      padding: isMobile ? "20px" : "28px",
+
+      padding: isMobile ? "18px" : "28px",
+
       border: "1px solid rgba(255,255,255,0.08)",
     },
 
@@ -287,6 +313,7 @@ export default function About() {
   return (
 
     <motion.div
+      style={{ width: "100%", overflowX: "hidden" }}
       initial="initial"
       animate="in"
       exit="out"
