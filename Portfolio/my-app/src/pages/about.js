@@ -107,7 +107,6 @@ export default function About() {
   const [index, setIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
 
 
@@ -136,7 +135,6 @@ export default function About() {
 
   // Responsive detection
   useEffect(() => {
-    setMounted(true);
 
     const resize = () => {
       setIsMobile(window.innerWidth <= 768);
