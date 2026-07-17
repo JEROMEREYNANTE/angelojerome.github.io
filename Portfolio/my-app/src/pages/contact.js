@@ -8,7 +8,8 @@ import {
   FaGithub,
   FaMapMarkerAlt,
   FaDownload,
-  FaBriefcase,
+  FaLinkedin,
+  FaComments
 } from "react-icons/fa";
 
 const pageVariants = {
@@ -17,46 +18,37 @@ const pageVariants = {
   out: { opacity: 0, y: -20 },
 };
 
-const pageTransition = {
-  duration: 0.4,
-};
-
 export default function Contact() {
 
   const fullText = "Contact Me";
-
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
-
   const [isMobile, setIsMobile] = useState(false);
 
 
-  // Typing animation
   useEffect(() => {
     if (index < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText((prev) => prev + fullText[index]);
+      const timer = setTimeout(() => {
+        setTypedText(prev => prev + fullText[index]);
         setIndex(index + 1);
       }, 70);
 
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(timer);
     }
   }, [index]);
 
 
-  // Responsive detection
   useEffect(() => {
 
-    const handleResize = () => {
+    const resize = () => {
       setIsMobile(window.innerWidth <= 768);
-    };
+    }
 
-    handleResize();
+    resize();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", resize);
 
-    return () =>
-      window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", resize);
 
   }, []);
 
@@ -64,158 +56,174 @@ export default function Contact() {
 
   const styles = {
 
-    pageWrapper: {
-      position: "relative",
-      width: "100%",
+    wrapper: {
       minHeight: "100vh",
-      overflow: "hidden",
+      position: "relative",
+      overflow: "hidden"
     },
 
 
-    backgroundLayer: {
+    background: {
       position: "absolute",
       inset: 0,
-      zIndex: 0,
-      pointerEvents: "none",
+      zIndex: 0
     },
 
 
     container: {
       position: "relative",
-      zIndex: 10,
+      zIndex: 2,
       display: "flex",
       justifyContent: "center",
-      padding: isMobile ? "70px 20px" : "120px 20px",
+      padding: isMobile ? "80px 20px" : "140px 20px"
     },
 
 
     content: {
-      maxWidth: "800px",
+      maxWidth: "850px",
       width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: isMobile ? "center" : "flex-start",
-      textAlign: isMobile ? "center" : "left",
+      textAlign: isMobile ? "center" : "left"
     },
 
 
     title: {
-      fontSize: isMobile ? "2rem" : "2.6rem",
+      fontSize: isMobile ? "2.2rem" : "3rem",
+      color: "white",
       fontWeight: "700",
       display: "flex",
+      justifyContent: isMobile ? "center" : "flex-start",
       alignItems: "center",
-      justifyContent: "center",
-      gap: "12px",
-      color: "rgba(255,255,255,0.9)",
-      marginBottom: "12px",
-      flexWrap: "wrap",
+      gap: "12px"
     },
 
 
     cursor: {
-      borderRight: "2px solid #4f46e5",
-      marginLeft: "6px",
+      borderRight: "3px solid #4f46e5"
     },
 
 
-    status: {
-      marginBottom: "20px",
-      padding: "8px 14px",
-      borderRadius: "999px",
-      background: "rgba(34,197,94,0.12)",
-      border: "1px solid rgba(34,197,94,0.4)",
-      color: "#86efac",
-      fontWeight: "600",
-      fontSize: "0.9rem",
-    },
-
-
-    subtitle: {
-      fontSize: isMobile ? "1rem" : "1.1rem",
+    description: {
+      marginTop: "20px",
+      color: "rgba(255,255,255,.75)",
+      fontSize: "1.1rem",
       lineHeight: "1.8",
-      color: "rgba(255,255,255,0.75)",
-      maxWidth: "650px",
-      marginBottom: "30px",
+      maxWidth: "650px"
     },
 
 
-    buttonGroup: {
+    buttons: {
       display: "flex",
       flexWrap: "wrap",
-      justifyContent: "center",
       gap: "12px",
-      marginBottom: "40px",
+      marginTop: "35px",
+      justifyContent: isMobile ? "center" : "flex-start"
     },
 
 
-    primaryButton: {
-      padding: "10px 16px",
-      borderRadius: "10px",
-      background: "#4f46e5",
-      color: "#fff",
-      textDecoration: "none",
-      fontWeight: "600",
-    },
-
-
-    secondaryButton: {
-      padding: "10px 16px",
-      borderRadius: "10px",
-      background: "rgba(255,255,255,0.08)",
-      color: "#fff",
-      textDecoration: "none",
-      fontWeight: "500",
+    button: {
+      padding: "12px 18px",
+      borderRadius: "12px",
       display: "flex",
       alignItems: "center",
-      gap: "6px",
-      border: "1px solid rgba(255,255,255,0.12)",
+      gap: "8px",
+      textDecoration: "none",
+      color: "white",
+      fontWeight: "600",
+      cursor: "pointer",
+    },
+
+    primary: {
+      background: "#4f46e5"
     },
 
 
-    grid: {
+    secondary: {
+      background: "rgba(255,255,255,.08)",
+      border: "1px solid rgba(255,255,255,.15)"
+    },
+
+
+    hover: {
+      transform: "translateY(-4px) scale(1.03)",
+      boxShadow: "0 12px 25px rgba(79,70,229,0.35)",
+    },
+
+
+    cards: {
+      marginTop: "50px",
       display: "grid",
       gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-      gap: "12px",
-      width: "100%",
+      gap: "15px"
     },
 
 
-    item: {
+    card: {
       display: "flex",
       alignItems: "center",
-      justifyContent: isMobile ? "center" : "flex-start",
-      gap: "10px",
-      padding: "14px",
-      borderRadius: "12px",
-      background: "rgba(255,255,255,0.06)",
-      border: "1px solid rgba(255,255,255,0.08)",
-      color: "#fff",
-      fontSize: isMobile ? "0.85rem" : "0.95rem",
+      gap: "12px",
+      padding: "18px",
+      borderRadius: "14px",
+      background: "rgba(255,255,255,.07)",
+      border: "1px solid rgba(255,255,255,.1)",
+      color: "white"
+    },
+
+
+    link: {
+      color: "white",
+      textDecoration: "none"
     },
 
 
     footer: {
-      marginTop: "50px",
-      color: "rgba(255,255,255,0.8)",
-      textAlign: isMobile ? "center" : "left",
-    },
+      marginTop: "60px",
+      color: "rgba(255,255,255,.8)"
+    }
 
   };
 
 
+  const Button = ({ id, children, href, primary }) => (
+    <motion.a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noopener noreferrer"
+      whileHover={{
+        y: -4,
+        scale: 1.05,
+        boxShadow: "0 12px 25px rgba(79,70,229,0.35)",
+      }}
+      whileTap={{
+        scale: 0.95,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 15,
+      }}
+      style={{
+        ...styles.button,
+        ...(primary ? styles.primary : styles.secondary),
+      }}
+    >
+      {children}
+    </motion.a>
+  );
 
   return (
+
     <motion.div
       initial="initial"
       animate="in"
       exit="out"
       variants={pageVariants}
-      transition={pageTransition}
+      transition={{ duration: .4 }}
     >
 
-      <div style={styles.pageWrapper}>
+      <div style={styles.wrapper}>
 
-        <div style={styles.backgroundLayer}>
+
+        <div style={styles.background}>
           <Grainient
             color1="#0F172A"
             color2="#2563EB"
@@ -225,95 +233,134 @@ export default function Contact() {
         </div>
 
 
+
         <div style={styles.container}>
 
           <div style={styles.content}>
 
+
             <h1 style={styles.title}>
-              <FaBriefcase color="#4f46e5" />
+              <FaComments color="#4f46e5" />
               {typedText}
               <span style={styles.cursor} />
             </h1>
 
 
-            <div style={styles.status}>
-              🟢 Available for Job Opportunities
-            </div>
 
-
-            <p style={styles.subtitle}>
-              I'm looking for opportunities to contribute to impactful products,
-              work with collaborative teams, and continue growing as a developer.
+            <p style={styles.description}>
+              Have a project idea, job opportunity, or just want to connect?
+              Feel free to reach out. I'm always open to discussing software
+              development, UI/UX design, and new opportunities.
             </p>
 
 
-            <div style={styles.buttonGroup}>
 
-              <a
+            <div style={styles.buttons}>
+
+              <Button
+                id="email"
                 href="mailto:reynantejerome@yahoo.com"
-                style={styles.primaryButton}
+                primary
               >
+                <FaEnvelope />
                 Email Me
-              </a>
+              </Button>
 
 
-              <a
-                href="https://github.com/JEROMEREYNANTE"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.secondaryButton}
+              <Button
+                id="linkedin"
+                href="https://www.linkedin.com/in/angelo-jerome-reynante-308914379/"
               >
+                <FaLinkedin />
+                LinkedIn
+              </Button>
+
+
+              <Button
+                id="github"
+                href="https://github.com/JEROMEREYNANTE"
+              >
+                <FaGithub />
                 GitHub
-              </a>
+              </Button>
 
 
-              <a
+
+              <Button
+                id="resume"
                 href="/Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.secondaryButton}
               >
                 <FaDownload />
                 Resume
-              </a>
+              </Button>
+
 
             </div>
 
 
-            <div style={styles.grid}>
 
-              <div style={styles.item}>
+
+            <div style={styles.cards}>
+
+
+              <div style={styles.card}>
                 <FaEnvelope />
                 reynantejerome@yahoo.com
               </div>
 
 
-              <div style={styles.item}>
+              <div style={styles.card}>
                 <FaPhone />
                 +1 403 803 9286
               </div>
 
 
-              <div style={styles.item}>
+              <div style={styles.card}>
                 <FaGithub />
-                github.com/JEROMEREYNANTE
+                <a
+                  href="https://github.com/JEROMEREYNANTE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.link}
+                >
+                  github.com/JEROMEREYNANTE
+                </a>
               </div>
 
 
-              <div style={styles.item}>
+
+              <div style={styles.card}>
+                <FaLinkedin />
+                <a
+                  href="https://www.linkedin.com/in/angelo-jerome-reynante-308914379/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.link}
+                >
+                  linkedin.com/in/angelo-jerome-reynante
+                </a>
+              </div>
+
+
+
+              <div style={styles.card}>
                 <FaMapMarkerAlt />
                 Calgary, Alberta, Canada
               </div>
 
+
             </div>
 
 
+
             <div style={styles.footer}>
-              <h3>Let’s build something together.</h3>
+              <h3>Looking forward to hearing from you.</h3>
+
               <p>
-                Whether it’s a job opportunity, collaboration, or project idea,
-                I’m always open to connecting.
+                Whether it's collaboration, development work, or a new opportunity,
+                let's create something meaningful.
               </p>
+
             </div>
 
 
@@ -321,8 +368,11 @@ export default function Contact() {
 
         </div>
 
+
       </div>
 
     </motion.div>
+
   );
+
 }
